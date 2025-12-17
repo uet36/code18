@@ -272,7 +272,7 @@
       "type": "bind"
     }
   ],
-  "postCreateCommand": "/opt/cs50/bin/postCreateCommand && python3 -m pip install --user check50 submit50",
+  "postCreateCommand": "/opt/cs50/bin/postCreateCommand",
   "postStartCommand": "/opt/cs50/bin/postStartCommand",
   "remoteEnv": {
     "CS50_GH_USER": "${localEnv:GITHUB_USER}",

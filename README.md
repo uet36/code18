@@ -10,18 +10,3 @@ Files:
 
 Usage
 - Mark this repository as a template or keep it in your org. Users will be forked from it automatically and a Codespace created for their fork.
-
-Run checks from the Codespace
-- Install check tools: `pip3 install --user check50 submit50`
-- Set a token in Codespaces secrets (recommended): `PLATFORM_TOKEN` or use `GITHUB_TOKEN` from environment.
-- Run the provided helper to execute checks and report results to the platform:
-
-  ```bash
-  ./tools/run_check.sh <assignmentId> <backendUrl>
-  ```
-
-- Example: `./tools/run_check.sh week1 https://platform.example.com`
-
-Notes
-- The script will POST results to `/api/tools/report` and the backend will persist results to the database.
-- Tokens are sent in Authorization header — do not share them publicly.

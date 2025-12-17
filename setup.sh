@@ -10,9 +10,9 @@ fi
 # Install cs50 library and common CLI tools via pipx if available
 python -m pip install --upgrade pip
 if command -v pipx >/dev/null 2>&1; then
-  pipx install --system-site-packages cs50 || true
+  pipx install --system-site-packages cs50 check50 submit50 || true
 else
-  python -m pip install cs50 || true
+  python -m pip install cs50 check50 submit50 || true
 fi
 
 # Install nvm and latest LTS node for vscode user

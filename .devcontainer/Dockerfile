@@ -1,7 +1,8 @@
 
-FROM mcr.microsoft.com/vscode/devcontainers/base:0-focal
+FROM mcr.microsoft.com/vscode/devcontainers/base:0-ubuntu-22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV PATH=/usr/local/bin:/root/.local/bin:$PATH
 
 # Install system packages commonly used in CS50-like environments
 RUN apt-get update \
@@ -12,6 +13,8 @@ RUN apt-get update \
     gcc \
     g++ \
     clang \
+    clang-format \
+    clang-tidy \
     make \
     cmake \
     pkg-config \
@@ -31,6 +34,10 @@ RUN apt-get update \
     nodejs \
     npm \
     golang \
+    gdb \
+    valgrind \
+    libssl-dev \
+    libffi-dev \
   && rm -rf /var/lib/apt/lists/*
 
 # Update python symlink
@@ -45,10 +52,11 @@ RUN type -p curl >/dev/null || (apt-get update && apt-get install -y curl) \
   && apt-get update && apt-get install -y gh \
   && rm -rf /var/lib/apt/lists/*
 
-# Install pipx and useful Python tools
+# Install pipx and useful Python tools (and CS50 CLI tools)
 RUN python -m pip install --upgrade pip \
   && python -m pip install pipx \
-  && python -m pipx ensurepath || true
+  && python -m pipx ensurepath || true \
+  && python -m pip install --no-cache-dir --upgrade --ignore-installed check50 submit50 cs50 || true
 
 # Install nvm and rustup in /usr/local (postCreateCommand also installs user-local toolchains)
 RUN curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash || true \

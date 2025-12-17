@@ -1,5 +1,6 @@
 {
   "name": "UET Codespace",
+  "image": "vsc-integ-codespace:latest",
   "build": {
     "dockerfile": "Dockerfile",
     "context": ".."
@@ -9,10 +10,16 @@
       "extensions": [
         "ms-python.python",
         "ms-vscode.cpptools",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "rust-lang.rust-analyzer",
+        "golang.go"
       ]
     }
   },
   "postCreateCommand": "./setup.sh",
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
   "remoteUser": "vscode"
 }
